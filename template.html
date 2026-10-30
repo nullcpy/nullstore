@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NullStore - Patched Android Apps: ReVanced, MorpheApp, ReVanced Advanced, Magisk Modules</title>
+    <meta name="description"
+        content="One catalog of the latest patched Android apps built by NullForge from ReVanced, MorpheApp, ReVanced Advanced (RVX), Piko and other patch brands, plus Magisk and KernelSU modules. 142 apps, ad-free with unlocked features, refreshed within hours of every release.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Fahim Ahmed / nullcpy">
+    <link rel="canonical" href="https://nullcpy.github.io/nullstore/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NullStore">
+    <meta property="og:title" content="NullStore - Patched Android Apps Catalog">
+    <meta property="og:description"
+        content="The latest patched ReVanced, MorpheApp, ReVanced Advanced and community builds for 142 Android apps, plus Magisk and KernelSU modules.">
+    <meta property="og:url" content="https://nullcpy.github.io/nullstore/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="NullStore - Patched Android Apps Catalog">
+    <meta name="twitter:description"
+        content="The latest patched ReVanced, MorpheApp, ReVanced Advanced and community builds for 142 Android apps, plus Magisk and KernelSU modules.">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='14' y='20' width='72' height='70' rx='10' fill='%230B1220'/><path d='M30 30v-6c0-9 8-16 20-16s20 7 20 16v6' fill='none' stroke='%2300D084' stroke-width='7' stroke-linecap='round'/><text x='50' y='56' text-anchor='middle' dominant-baseline='middle' font-size='60' font-family='Arial,sans-serif' font-weight='700' fill='%2300D084'>&#248;</text></svg>">
+    <style>
+        :root {
+            --bg: #1a1814;
+            --bg-card: #201e1a;
+            --bg-chip: #2a2723;
+            --text: #f0ede8;
+            --text-2: #a89f94;
+            --text-3: #6b6358;
+            --accent: #00d084;
+            --border: rgba(240, 237, 232, 0.08);
+            --radius: 12px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #faf7f2;
+                --bg-card: #ffffff;
+                --bg-chip: #f0ebe3;
+                --text: #26221c;
+                --text-2: #6b6358;
+                --text-3: #9a9086;
+                --border: #e8e0d5;
+            }
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        header.site { padding: 56px 0 8px; text-align: center; }
+        h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); font-weight: 800; margin: 0 0 12px; letter-spacing: -0.02em; }
+        h1 .accent { color: var(--accent); }
+        .lede { max-width: 720px; margin: 0 auto; color: var(--text-2); font-size: 1.02rem; }
+        .stats { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 28px 0 8px; }
+        .stat { text-align: center; }
+        .stat b { display: block; font-size: 1.5rem; color: var(--accent); font-weight: 800; }
+        .stat span { font-size: 0.82rem; color: var(--text-3); }
+
+        .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 32px 0 8px; }
+        .btn {
+            display: inline-block; padding: 12px 26px; border-radius: 999px;
+            font-weight: 700; font-size: 0.95rem; text-decoration: none;
+        }
+        .btn-primary { background: var(--accent); color: #0d1117; }
+        .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+        /* Section action button: bigger than the hero pills and squarish, so it
+           reads as the takeaways of the paragraph above it */
+        .btn-lg { padding: 14px 30px; font-size: 1rem; border-radius: 10px; }
+        .section-action { margin: 18px 0 0; }
+
+        section { margin: 52px 0; }
+        h2 { font-size: 1.4rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+        .section-sub { color: var(--text-2); font-size: 0.92rem; margin: 0 0 20px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+        .app {
+            display: block; padding: 12px 14px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 600;
+        }
+        .app:hover { border-color: var(--accent); }
+        .app small { display: block; font-weight: 400; color: var(--text-3); font-size: 0.76rem; }
+        /* Cards are build-injected with hrefs; keep an un-injected template honest */
+        .app:not([href]) { display: none; }
+
+        .faq dt { font-weight: 700; margin-top: 18px; }
+        .faq dd { margin: 4px 0 0; color: var(--text-2); }
+        .faq dd a { color: var(--accent); }
+        footer.site { border-top: 1px solid var(--border); padding: 26px 0 44px; margin-top: 60px; color: var(--text-3); font-size: 0.84rem; text-align: center; }
+        footer.site a { color: var(--text-2); }
+    </style>
+</head>
+
+<body>
+    <header class="site">
+        <div class="wrap">
+            <h1><span class="accent">Null</span>Store - Patched Android App Catalog</h1>
+            <p class="lede">
+                One fast page for the latest patched builds of <strong>142 Android apps</strong>,
+                YouTube, Reddit, TikTok, Telegram, Spotify and more, ad-free with unlocked features.
+                Built automatically by <strong>NullForge</strong> from the <strong>ReVanced</strong>,
+                <strong>MorpheApp</strong>, <strong>ReVanced Advanced (RVX)</strong>, <strong>Piko</strong>
+                and other community patch brands, plus <strong>Magisk and KernelSU modules</strong>.
+                Every build appears here within hours of its upstream release.
+            </p>
+            <nav class="stats" aria-label="Catalog size">
+                <!-- BUILD:STATS -->
+            </nav>
+            <p class="cta">
+                <a class="btn btn-primary" id="store-open" data-store href="https://nullcpy.github.io/">Open the store</a>
+                <a class="btn btn-ghost" href="#apps">Browse all apps</a>
+            </p>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section id="domains" aria-labelledby="domains-h">
+            <h2 id="domains-h">Store domains</h2>
+            <p class="section-sub">
+                The store answers on several domains at once: the primary GitHub Pages address plus its
+                hosting mirrors, each serving the identical catalog from the same build. Your visit is
+                assigned one of them automatically, so no single host carries all the traffic, and the
+                <strong>Open the store</strong> button above always opens yours.
+            </p>
+            <p class="section-sub">
+                If that domain ever stops responding, the project page on the maintainer's site lists every
+                mirror alongside the support and donation channels. Bookmark it: it is the page that gets
+                updated whenever a domain changes.
+            </p>
+            <p class="section-action">
+                <a class="btn btn-ghost btn-lg" href="https://fahim-ahmed05.github.io/nullstore">Open the project page</a>
+            </p>
+        </section>
+
+        <section id="apps" aria-labelledby="apps-h">
+            <h2 id="apps-h">Patched apps in this catalog</h2>
+            <p class="section-sub">
+                Every app below ships patched with ad-blocking, background playback, sponsor-blocking and
+                feature unlocks depending on its applied patches. Click any app to open it in the store
+                with its newest builds, per-architecture APKs and changelogs.
+            </p>
+            <div class="grid">
+                <!-- BUILD:APPS -->
+            </div>
+        </section>
+
+        <section id="brands" aria-labelledby="brands-h">
+            <h2 id="brands-h">Patch brands and builders</h2>
+            <p class="section-sub">
+                NullStore aggregates builds produced by the NullForge automated builder from the ReVanced
+                and MorpheApp patch sources, ReVanced Advanced (RVX), Piko, anddea, DeVanced and other
+                independent patch brands, currently
+                <!-- BUILD:BRANDCOUNT --> brands across the catalog. Each app card in the store shows exactly
+                which brand produced each build, its version, release date and applied patches, so you
+                always know what you are installing.
+            </p>
+        </section>
+
+        <section id="faq" aria-labelledby="faq-h">
+            <h2 id="faq-h">FAQ</h2>
+            <dl class="faq">
+                <dt>Where can I download patched ReVanced, MorpheApp or ReVanced Advanced apps?</dt>
+                <dd><a data-store href="https://nullcpy.github.io/">NullStore</a> lists every current
+                    build with its version, architecture and applied patches, and links straight to the
+                    original release files on GitHub.</dd>
+                <dt>Is this safe to install?</dt>
+                <dd>Every build links to its source release; nothing is re-hosted or re-signed by this site.
+                    Check the applied-patch list on each build card and install only what you trust.</dd>
+                <dt>Do I need root?</dt>
+                <dd>Patched APKs need no root. The catalog also carries <em>Magisk</em> and <em>KernelSU</em>
+                    modules for rooted devices, marked as Module downloads.</dd>
+                <dt>Can I get automatic updates?</dt>
+                <dd>Yes, every build exposes an <a href="https://github.com/ImranR98/Obtainium">Obtainium</a>
+                    one-click install, so your phone checks for new builds itself.</dd>
+                <dt>How often is the catalog refreshed?</dt>
+                <dd>Automatically, within hours of any upstream release. This page and the store are rebuilt
+                    on a daily schedule from the live catalog.</dd>
+                <dt>Where can I see the source code?</dt>
+                <dd>The <a href="https://github.com/nullcpy/rvb">NullForge builder</a> that patches and
+                    publishes every build, the
+                    <a href="https://github.com/nullcpy/nullcpy.github.io">store website</a> that renders
+                    this catalog, and <a href="https://github.com/nullcpy/nullstore">this gateway page</a>
+                    are all open source on GitHub.</dd>
+            </dl>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="wrap">
+            <p>NullStore is an independent catalog; it is not affiliated with Google, ReVanced, MorpheApp or
+                the developers of the patched apps. All builds link to their original public releases.</p>
+            <p>© <a href="https://github.com/nullcpy">nullcpy</a> · Catalog updated <!-- BUILD:UPDATED --></p>
+        </div>
+    </footer>
+
+    <!-- Structured data, per-app entries, stats and the domain list are injected
+         at build time by build.mjs from the live catalog (data.json). See README. -->
+    <!-- BUILD:JSONLD -->
+
+    <script>
+        // Store-domain rotation: one deterministic pick per visitor (survives
+        // page reloads via localStorage) shared by the "Open the store" button
+        // and every app card, so no single domain absorbs all gateway traffic.
+        // Crawl semantics never change: every href in the committed HTML stays
+        // the canonical origin; only the visitor's browser swaps the domain.
+        (function () {
+            var DOMAINS = [
+                'https://nullcpy.github.io/',
+                'https://nullstore.vercel.app/',
+                'https://nullcpy.pages.dev/',
+                'https://nullstore.nullcpy.workers.dev/'
+            ];
+            var i = -1;
+            try { i = parseInt(localStorage.getItem('ns-domain') || '', 10); } catch (e) { /* storage blocked */ }
+            if (!(i >= 0 && i < DOMAINS.length)) {
+                i = Math.floor(Math.random() * DOMAINS.length);
+                try { localStorage.setItem('ns-domain', String(i)); } catch (e) { /* best effort */ }
+            }
+            var base = DOMAINS[i];
+            var els = document.querySelectorAll('[data-store]');
+            for (var k = 0; k < els.length; k++) {
+                var q = els[k].getAttribute('data-q');
+                els[k].href = q ? base + '?q=' + encodeURIComponent(q) : base;
+            }
+        })();
+    </script>
+
+    <!-- Cloudflare Web Analytics beacon, written by the CI deploy step from the
+         CF_BEACON_TOKEN repo secret -- never committed in index.html -->
+    <!-- ANALYTICS-BEACON -->
+</body>
+
+</html>

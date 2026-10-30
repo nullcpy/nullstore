@@ -1,0 +1,3 @@
+# Transient catalog fetch + staged deploy output from the CI workflow -- never committed
+data.json
+dist/

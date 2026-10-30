@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NullStore - Patched Android Apps: ReVanced, MorpheApp, ReVanced Advanced, Magisk Modules</title>
+    <meta name="description"
+        content="One catalog of the latest patched Android apps built by NullForge from ReVanced, MorpheApp, ReVanced Advanced (RVX), Piko and other patch brands, plus Magisk and KernelSU modules. 142 apps, ad-free with unlocked features, refreshed within hours of every release.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Fahim Ahmed / nullcpy">
+    <link rel="canonical" href="https://nullcpy.github.io/nullstore/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NullStore">
+    <meta property="og:title" content="NullStore - Patched Android Apps Catalog">
+    <meta property="og:description"
+        content="The latest patched ReVanced, MorpheApp, ReVanced Advanced and community builds for 142 Android apps, plus Magisk and KernelSU modules.">
+    <meta property="og:url" content="https://nullcpy.github.io/nullstore/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="NullStore - Patched Android Apps Catalog">
+    <meta name="twitter:description"
+        content="The latest patched ReVanced, MorpheApp, ReVanced Advanced and community builds for 142 Android apps, plus Magisk and KernelSU modules.">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='14' y='20' width='72' height='70' rx='10' fill='%230B1220'/><path d='M30 30v-6c0-9 8-16 20-16s20 7 20 16v6' fill='none' stroke='%2300D084' stroke-width='7' stroke-linecap='round'/><text x='50' y='56' text-anchor='middle' dominant-baseline='middle' font-size='60' font-family='Arial,sans-serif' font-weight='700' fill='%2300D084'>&#248;</text></svg>">
+    <style>
+        :root {
+            --bg: #1a1814;
+            --bg-card: #201e1a;
+            --bg-chip: #2a2723;
+            --text: #f0ede8;
+            --text-2: #a89f94;
+            --text-3: #6b6358;
+            --accent: #00d084;
+            --border: rgba(240, 237, 232, 0.08);
+            --radius: 12px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #faf7f2;
+                --bg-card: #ffffff;
+                --bg-chip: #f0ebe3;
+                --text: #26221c;
+                --text-2: #6b6358;
+                --text-3: #9a9086;
+                --border: #e8e0d5;
+            }
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        header.site { padding: 56px 0 8px; text-align: center; }
+        h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); font-weight: 800; margin: 0 0 12px; letter-spacing: -0.02em; }
+        h1 .accent { color: var(--accent); }
+        .lede { max-width: 720px; margin: 0 auto; color: var(--text-2); font-size: 1.02rem; }
+        .stats { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin: 28px 0 8px; }
+        .stat { text-align: center; }
+        .stat b { display: block; font-size: 1.5rem; color: var(--accent); font-weight: 800; }
+        .stat span { font-size: 0.82rem; color: var(--text-3); }
+
+        .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 32px 0 8px; }
+        .btn {
+            display: inline-block; padding: 12px 26px; border-radius: 999px;
+            font-weight: 700; font-size: 0.95rem; text-decoration: none;
+        }
+        .btn-primary { background: var(--accent); color: #0d1117; }
+        .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+        /* Section action button: bigger than the hero pills and squarish, so it
+           reads as the takeaways of the paragraph above it */
+        .btn-lg { padding: 14px 30px; font-size: 1rem; border-radius: 10px; }
+        .section-action { margin: 18px 0 0; }
+
+        section { margin: 52px 0; }
+        h2 { font-size: 1.4rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+        .section-sub { color: var(--text-2); font-size: 0.92rem; margin: 0 0 20px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+        .app {
+            display: block; padding: 12px 14px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 600;
+        }
+        .app:hover { border-color: var(--accent); }
+        .app small { display: block; font-weight: 400; color: var(--text-3); font-size: 0.76rem; }
+        /* Cards are build-injected with hrefs; keep an un-injected template honest */
+        .app:not([href]) { display: none; }
+
+        .faq dt { font-weight: 700; margin-top: 18px; }
+        .faq dd { margin: 4px 0 0; color: var(--text-2); }
+        .faq dd a { color: var(--accent); }
+        footer.site { border-top: 1px solid var(--border); padding: 26px 0 44px; margin-top: 60px; color: var(--text-3); font-size: 0.84rem; text-align: center; }
+        footer.site a { color: var(--text-2); }
+    </style>
+</head>
+
+<body>
+    <header class="site">
+        <div class="wrap">
+            <h1><span class="accent">Null</span>Store - Patched Android App Catalog</h1>
+            <p class="lede">
+                One fast page for the latest patched builds of <strong>142 Android apps</strong>,
+                YouTube, Reddit, TikTok, Telegram, Spotify and more, ad-free with unlocked features.
+                Built automatically by <strong>NullForge</strong> from the <strong>ReVanced</strong>,
+                <strong>MorpheApp</strong>, <strong>ReVanced Advanced (RVX)</strong>, <strong>Piko</strong>
+                and other community patch brands, plus <strong>Magisk and KernelSU modules</strong>.
+                Every build appears here within hours of its upstream release.
+            </p>
+            <nav class="stats" aria-label="Catalog size">
+                <span class="stat"><b>142</b><span>apps</span></span>
+                <span class="stat"><b>44,173</b><span>total downloads</span></span>
+                <span class="stat"><b>61</b><span>patch brands</span></span>
+            </nav>
+            <p class="cta">
+                <a class="btn btn-primary" id="store-open" data-store href="https://nullcpy.github.io/">Open the store</a>
+                <a class="btn btn-ghost" href="#apps">Browse all apps</a>
+            </p>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section id="domains" aria-labelledby="domains-h">
+            <h2 id="domains-h">Store domains</h2>
+            <p class="section-sub">
+                The store answers on several domains at once: the primary GitHub Pages address plus its
+                hosting mirrors, each serving the identical catalog from the same build. Your visit is
+                assigned one of them automatically, so no single host carries all the traffic, and the
+                <strong>Open the store</strong> button above always opens yours.
+            </p>
+            <p class="section-sub">
+                If that domain ever stops responding, the project page on the maintainer's site lists every
+                mirror alongside the support and donation channels. Bookmark it: it is the page that gets
+                updated whenever a domain changes.
+            </p>
+            <p class="section-action">
+                <a class="btn btn-ghost btn-lg" href="https://fahim-ahmed05.github.io/nullstore">Open the project page</a>
+            </p>
+        </section>
+
+        <section id="apps" aria-labelledby="apps-h">
+            <h2 id="apps-h">Patched apps in this catalog</h2>
+            <p class="section-sub">
+                Every app below ships patched with ad-blocking, background playback, sponsor-blocking and
+                feature unlocks depending on its applied patches. Click any app to open it in the store
+                with its newest builds, per-architecture APKs and changelogs.
+            </p>
+            <div class="grid">
+                                <a class="app" id="a-acalendar" href="https://nullcpy.github.io/?q=acalendar" data-store data-q="acalendar">aCalendar<small>2.9.6 · hxreborn +1 more · 75 downloads</small></a>
+                <a class="app" id="a-accuweather" href="https://nullcpy.github.io/?q=accuweather" data-store data-q="accuweather">AccuWeather<small>21.1.15-3-rc · rushiranpise · 61 downloads</small></a>
+                <a class="app" id="a-adguard" href="https://nullcpy.github.io/?q=adguard" data-store data-q="adguard">AdGuard<small>4.14.68 · rushiranpise +1 more · 149 downloads</small></a>
+                <a class="app" id="a-adobeacrobat" href="https://nullcpy.github.io/?q=adobeacrobat" data-store data-q="adobeacrobat">Adobe Acrobat<small>26.7.1.47181 · hooman · 115 downloads</small></a>
+                <a class="app" id="a-adobelightroom" href="https://nullcpy.github.io/?q=adobelightroom" data-store data-q="adobelightroom">Adobe Lightroom<small>11.5.31 · hoodles · 118 downloads</small></a>
+                <a class="app" id="a-adobescan" href="https://nullcpy.github.io/?q=adobescan" data-store data-q="adobescan">Adobe Scan<small>26.08.01 · rushiranpise · 36 downloads</small></a>
+                <a class="app" id="a-aliexpress" href="https://nullcpy.github.io/?q=aliexpress" data-store data-q="aliexpress">AliExpress<small>8.162.8 · Quantro100 · 121 downloads</small></a>
+                <a class="app" id="a-amazonindia" href="https://nullcpy.github.io/?q=amazonindia" data-store data-q="amazonindia">Amazon India<small>32.19.0.300 · rushiranpise · 42 downloads</small></a>
+                <a class="app" id="a-amazonshopping" href="https://nullcpy.github.io/?q=amazonshopping" data-store data-q="amazonshopping">Amazon Shopping<small>32.19.0.100 · rushiranpise · 78 downloads</small></a>
+                <a class="app" id="a-appsales" href="https://nullcpy.github.io/?q=appsales" data-store data-q="appsales">AppSales<small>12.3 · Entree3k · 57 downloads</small></a>
+                <a class="app" id="a-at4klauncher" href="https://nullcpy.github.io/?q=at4klauncher" data-store data-q="at4klauncher">AT4K Launcher<small>0.99 · hooman · 71 downloads</small></a>
+                <a class="app" id="a-atvtools" href="https://nullcpy.github.io/?q=atvtools" data-store data-q="atvtools">atvTools<small>1.3.2 · hxreborn · 111 downloads</small></a>
+                <a class="app" id="a-automate" href="https://nullcpy.github.io/?q=automate" data-store data-q="automate">Automate<small>1.51.1 · BholeyKaBhakt · 30 downloads</small></a>
+                <a class="app" id="a-autosync" href="https://nullcpy.github.io/?q=autosync" data-store data-q="autosync">Autosync<small>7.5.10 · BholeyKaBhakt · 94 downloads</small></a>
+                <a class="app" id="a-backdrops" href="https://nullcpy.github.io/?q=backdrops" data-store data-q="backdrops">Backdrops<small>6.1.2 · BholeyKaBhakt · 59 downloads</small></a>
+                <a class="app" id="a-batteryguru" href="https://nullcpy.github.io/?q=batteryguru" data-store data-q="batteryguru">Battery Guru<small>2.5.0.6 · hooman · 142 downloads</small></a>
+                <a class="app" id="a-betamaniac" href="https://nullcpy.github.io/?q=betamaniac" data-store data-q="betamaniac">Beta Maniac<small>0.11.0 · rushiranpise · 14 downloads</small></a>
+                <a class="app" id="a-blockblast" href="https://nullcpy.github.io/?q=blockblast" data-store data-q="blockblast">Block Blast<small>10.8.1 · ImNoammm · 70 downloads</small></a>
+                <a class="app" id="a-bluetoothkeyboardmouse" href="https://nullcpy.github.io/?q=bluetoothkeyboardmouse" data-store data-q="bluetoothkeyboardmouse">Bluetooth Keyboard &amp; Mouse<small>6.23.1 · rushiranpise · 14 downloads</small></a>
+                <a class="app" id="a-bravebrowser" href="https://nullcpy.github.io/?q=bravebrowser" data-store data-q="bravebrowser">Brave Browser<small>1.98.60 · kveld9 +1 more · 725 downloads</small></a>
+                <a class="app" id="a-byair" href="https://nullcpy.github.io/?q=byair" data-store data-q="byair">ByAir<small>2.41.0 · franticg33k · 57 downloads</small></a>
+                <a class="app" id="a-calm" href="https://nullcpy.github.io/?q=calm" data-store data-q="calm">Calm<small>6.102 · rushiranpise · 16 downloads</small></a>
+                <a class="app" id="a-caloriecounter" href="https://nullcpy.github.io/?q=caloriecounter" data-store data-q="caloriecounter">Calorie Counter<small>11.8.2.1 · kondratjev · 39 downloads</small></a>
+                <a class="app" id="a-camscanner" href="https://nullcpy.github.io/?q=camscanner" data-store data-q="camscanner">CamScanner<small>7.20.0.2606230000 · hoodles · 137 downloads</small></a>
+                <a class="app" id="a-capcut" href="https://nullcpy.github.io/?q=capcut" data-store data-q="capcut">CapCut<small>9.0.0 · riky · 296 downloads</small></a>
+                <a class="app" id="a-chesscom" href="https://nullcpy.github.io/?q=chesscom" data-store data-q="chesscom">Chess.com<small>4.10.0 · Prathxm · 99 downloads</small></a>
+                <a class="app" id="a-citymapper" href="https://nullcpy.github.io/?q=citymapper" data-store data-q="citymapper">Citymapper<small>11.60 · rushiranpise · 41 downloads</small></a>
+                <a class="app" id="a-cloudflarewarp" href="https://nullcpy.github.io/?q=cloudflarewarp" data-store data-q="cloudflarewarp">Cloudflare WARP<small>6.38.11 · rushiranpise · 309 downloads</small></a>
+                <a class="app" id="a-cricbuzz" href="https://nullcpy.github.io/?q=cricbuzz" data-store data-q="cricbuzz">Cricbuzz<small>16.02.05 · Paresh · 49 downloads</small></a>
+                <a class="app" id="a-discord" href="https://nullcpy.github.io/?q=discord" data-store data-q="discord">Discord<small>350.8-Stable · Venus +2 more · 693 downloads</small></a>
+                <a class="app" id="a-disney" href="https://nullcpy.github.io/?q=disney" data-store data-q="disney">Disney+<small>26.16.0+rc2-2026.09.08 · ajstrick81 · 18 downloads</small></a>
+                <a class="app" id="a-duolingo" href="https://nullcpy.github.io/?q=duolingo" data-store data-q="duolingo">Duolingo<small>6.98.4 · hoodles · 208 downloads</small></a>
+                <a class="app" id="a-eyecon" href="https://nullcpy.github.io/?q=eyecon" data-store data-q="eyecon">Eyecon<small>4.2026.04.05.1300 · Paresh · 31 downloads</small></a>
+                <a class="app" id="a-fdroid" href="https://nullcpy.github.io/?q=fdroid" data-store data-q="fdroid">F-Droid<small>1.23.2 · patchweaver · 29 downloads</small></a>
+                <a class="app" id="a-facebook" href="https://nullcpy.github.io/?q=facebook" data-store data-q="facebook">Facebook<small>580.0.0.51.74 · DeVanced +3 more · 2,122 downloads</small></a>
+                <a class="app" id="a-fairemail" href="https://nullcpy.github.io/?q=fairemail" data-store data-q="fairemail">FairEmail<small>1.2339 · heval99 · 180 downloads</small></a>
+                <a class="app" id="a-fing" href="https://nullcpy.github.io/?q=fing" data-store data-q="fing">Fing<small>12.12.0 · Paresh · 65 downloads</small></a>
+                <a class="app" id="a-firsty" href="https://nullcpy.github.io/?q=firsty" data-store data-q="firsty">Firsty<small>1.8.23 · Trimpsuz · 7 downloads</small></a>
+                <a class="app" id="a-flipkart" href="https://nullcpy.github.io/?q=flipkart" data-store data-q="flipkart">Flipkart<small>9.15 · debakarr · 28 downloads</small></a>
+                <a class="app" id="a-foldersync" href="https://nullcpy.github.io/?q=foldersync" data-store data-q="foldersync">FolderSync<small>4.12.0 · hooman · 24 downloads</small></a>
+                <a class="app" id="a-github" href="https://nullcpy.github.io/?q=github" data-store data-q="github">GitHub<small>1.271.1 · hoodles · 58 downloads</small></a>
+                <a class="app" id="a-goodreads" href="https://nullcpy.github.io/?q=goodreads" data-store data-q="goodreads">Goodreads<small>2.75.0Build3 · hoodles · 36 downloads</small></a>
+                <a class="app" id="a-googlekeyboard" href="https://nullcpy.github.io/?q=googlekeyboard" data-store data-q="googlekeyboard">Google Keyboard<small>18.5.4.993608717-release-arm64-v8a · jasonwu1994 · 477 downloads</small></a>
+                <a class="app" id="a-googlemaps" href="https://nullcpy.github.io/?q=googlemaps" data-store data-q="googlemaps">Google Maps<small>26.36.04.973607363 · bearinmindcat · 598 downloads</small></a>
+                <a class="app" id="a-googlenews" href="https://nullcpy.github.io/?q=googlenews" data-store data-q="googlenews">Google News<small>5.163.0.947799485 · docbt · 111 downloads</small></a>
+                <a class="app" id="a-googlephone" href="https://nullcpy.github.io/?q=googlephone" data-store data-q="googlephone">Google Phone<small>161.0.726587057 · hooman · 75 downloads</small></a>
+                <a class="app" id="a-googlephotos" href="https://nullcpy.github.io/?q=googlephotos" data-store data-q="googlephotos">Google Photos<small>7.92.0.977185651 · DeVanced +2 more · 1,841 downloads</small></a>
+                <a class="app" id="a-googlerecorder" href="https://nullcpy.github.io/?q=googlerecorder" data-store data-q="googlerecorder">Google Recorder<small>4.2.20260823.992025916 · DeVanced · 47 downloads</small></a>
+                <a class="app" id="a-hbomax" href="https://nullcpy.github.io/?q=hbomax" data-store data-q="hbomax">HBO Max<small>7.9.0.61 · ajstrick81 · 16 downloads</small></a>
+                <a class="app" id="a-hellochinese" href="https://nullcpy.github.io/?q=hellochinese" data-store data-q="hellochinese">HelloChinese<small>7.11.0 · hoodles · 17 downloads</small></a>
+                <a class="app" id="a-hermit" href="https://nullcpy.github.io/?q=hermit" data-store data-q="hermit">Hermit<small>31.6.1 · Lain · 39 downloads</small></a>
+                <a class="app" id="a-holavpn" href="https://nullcpy.github.io/?q=holavpn" data-store data-q="holavpn">Hola VPN<small>AARCH64_1.248.400 · rushiranpise · 53 downloads</small></a>
+                <a class="app" id="a-ibispaintx" href="https://nullcpy.github.io/?q=ibispaintx" data-store data-q="ibispaintx">Ibis Paint X<small>14.1.0 · hoodles · 28 downloads</small></a>
+                <a class="app" id="a-iconpacker" href="https://nullcpy.github.io/?q=iconpacker" data-store data-q="iconpacker">Icon Packer<small>1.21.0-release · hoodles · 33 downloads</small></a>
+                <a class="app" id="a-imdb" href="https://nullcpy.github.io/?q=imdb" data-store data-q="imdb">IMDb<small>9.3.6 · adobo · 82 downloads</small></a>
+                <a class="app" id="a-inshorts" href="https://nullcpy.github.io/?q=inshorts" data-store data-q="inshorts">Inshorts<small>6.12.18 · BholeyKaBhakt · 37 downloads</small></a>
+                <a class="app" id="a-inshot" href="https://nullcpy.github.io/?q=inshot" data-store data-q="inshot">InShot<small>2.214.1539 · hooman · 73 downloads</small></a>
+                <a class="app" id="a-instagram" href="https://nullcpy.github.io/?q=instagram" data-store data-q="instagram">Instagram<small>453.0.0.55.79 · HushGram +3 more · 2,762 downloads</small></a>
+                <a class="app" id="a-kinestop" href="https://nullcpy.github.io/?q=kinestop" data-store data-q="kinestop">KineStop<small>5.1 · ShaunTheSheep · 46 downloads</small></a>
+                <a class="app" id="a-komoot" href="https://nullcpy.github.io/?q=komoot" data-store data-q="komoot">Komoot<small>2026.26.7 · brosssh · 39 downloads</small></a>
+                <a class="app" id="a-letterboxd" href="https://nullcpy.github.io/?q=letterboxd" data-store data-q="letterboxd">Letterboxd<small>3.5.8 · mvaishak · 53 downloads</small></a>
+                <a class="app" id="a-linkedin" href="https://nullcpy.github.io/?q=linkedin" data-store data-q="linkedin">LinkedIn<small>4.1.1261 · michii · 53 downloads</small></a>
+                <a class="app" id="a-luminawallpapers" href="https://nullcpy.github.io/?q=luminawallpapers" data-store data-q="luminawallpapers">Lumina Wallpapers<small>1.0.2.4 · Paresh · 72 downloads</small></a>
+                <a class="app" id="a-macrodroid" href="https://nullcpy.github.io/?q=macrodroid" data-store data-q="macrodroid">MacroDroid<small>5.66.9 · rushiranpise +1 more · 55 downloads</small></a>
+                <a class="app" id="a-medium" href="https://nullcpy.github.io/?q=medium" data-store data-q="medium">Medium<small>4.5.1784910928 · bufferk · 89 downloads</small></a>
+                <a class="app" id="a-meesho" href="https://nullcpy.github.io/?q=meesho" data-store data-q="meesho">Meesho<small>29.6 · debakarr · 28 downloads</small></a>
+                <a class="app" id="a-merriamwebsterdictionary" href="https://nullcpy.github.io/?q=merriamwebsterdictionary" data-store data-q="merriamwebsterdictionary">Merriam Webster Dictionary<small>5.6.2 · hoodles · 58 downloads</small></a>
+                <a class="app" id="a-messenger" href="https://nullcpy.github.io/?q=messenger" data-store data-q="messenger">Messenger<small>573.0.0.44.88 · DeVanced +2 more · 381 downloads</small></a>
+                <a class="app" id="a-microsoftedge" href="https://nullcpy.github.io/?q=microsoftedge" data-store data-q="microsoftedge">Microsoft Edge<small>152.0.4191.65 · quantavil · 117 downloads</small></a>
+                <a class="app" id="a-microsoftlens" href="https://nullcpy.github.io/?q=microsoftlens" data-store data-q="microsoftlens">Microsoft Lens<small>16.0.19628.20008 · DeVanced · 20 downloads</small></a>
+                <a class="app" id="a-microsoftswiftkey" href="https://nullcpy.github.io/?q=microsoftswiftkey" data-store data-q="microsoftswiftkey">Microsoft Swiftkey<small>9.13.13.5 · hooman · 86 downloads</small></a>
+                <a class="app" id="a-microsoftword" href="https://nullcpy.github.io/?q=microsoftword" data-store data-q="microsoftword">Microsoft Word<small>16.0.20228.20090 · rushiranpise +1 more · 108 downloads</small></a>
+                <a class="app" id="a-moneymanager" href="https://nullcpy.github.io/?q=moneymanager" data-store data-q="moneymanager">Money Manager<small>4.11.1GF · hooman · 34 downloads</small></a>
+                <a class="app" id="a-moonreader" href="https://nullcpy.github.io/?q=moonreader" data-store data-q="moonreader">Moon+ Reader<small>10.5 · binarymend · 126 downloads</small></a>
+                <a class="app" id="a-musicolet" href="https://nullcpy.github.io/?q=musicolet" data-store data-q="musicolet">Musicolet<small>6.14.1build540 · hxreborn · 63 downloads</small></a>
+                <a class="app" id="a-musicoletcastplugin" href="https://nullcpy.github.io/?q=musicoletcastplugin" data-store data-q="musicoletcastplugin">Musicolet Cast Plugin<small>1.9 · hxreborn · 50 downloads</small></a>
+                <a class="app" id="a-myexpenses" href="https://nullcpy.github.io/?q=myexpenses" data-store data-q="myexpenses">My Expenses<small>4.1.1.2 · hoodles · 23 downloads</small></a>
+                <a class="app" id="a-myfitnesspal" href="https://nullcpy.github.io/?q=myfitnesspal" data-store data-q="myfitnesspal">MyFitnessPal<small>26.42.0 · heval99 +1 more · 87 downloads</small></a>
+                <a class="app" id="a-netflix" href="https://nullcpy.github.io/?q=netflix" data-store data-q="netflix">Netflix<small>13.0.1build25028 · ajstrick81 · 27 downloads</small></a>
+                <a class="app" id="a-niagaralauncher" href="https://nullcpy.github.io/?q=niagaralauncher" data-store data-q="niagaralauncher">Niagara Launcher<small>1.16.7 · Entree3k · 127 downloads</small></a>
+                <a class="app" id="a-ninjavpn" href="https://nullcpy.github.io/?q=ninjavpn" data-store data-q="ninjavpn">Ninja VPN<small>1.4.7 · rushiranpise · 48 downloads</small></a>
+                <a class="app" id="a-novalauncher" href="https://nullcpy.github.io/?q=novalauncher" data-store data-q="novalauncher">Nova Launcher<small>88600 · hoodles · 90 downloads</small></a>
+                <a class="app" id="a-nuvio" href="https://nullcpy.github.io/?q=nuvio" data-store data-q="nuvio">Nuvio<small>0.9.0-beta · liongalahad · 72 downloads</small></a>
+                <a class="app" id="a-offlinegames" href="https://nullcpy.github.io/?q=offlinegames" data-store data-q="offlinegames">Offline Games<small>3.15.3 · ggYasin · 37 downloads</small></a>
+                <a class="app" id="a-pandora" href="https://nullcpy.github.io/?q=pandora" data-store data-q="pandora">Pandora<small>2609.2 · hoodles · 56 downloads</small></a>
+                <a class="app" id="a-peacock" href="https://nullcpy.github.io/?q=peacock" data-store data-q="peacock">Peacock<small>7.10.102 · ajstrick81 · 23 downloads</small></a>
+                <a class="app" id="a-photomath" href="https://nullcpy.github.io/?q=photomath" data-store data-q="photomath">Photomath<small>8.48.0 · DeVanced · 66 downloads</small></a>
+                <a class="app" id="a-picsart" href="https://nullcpy.github.io/?q=picsart" data-store data-q="picsart">PicsArt<small>30.7.8 · rushiranpise · 49 downloads</small></a>
+                <a class="app" id="a-pinterest" href="https://nullcpy.github.io/?q=pinterest" data-store data-q="pinterest">Pinterest<small>14.39.0 · browzomje · 400 downloads</small></a>
+                <a class="app" id="a-pixiv" href="https://nullcpy.github.io/?q=pixiv" data-store data-q="pixiv">pixiv<small>6.196.0 · DeVanced +1 more · 117 downloads</small></a>
+                <a class="app" id="a-plusmessenger" href="https://nullcpy.github.io/?q=plusmessenger" data-store data-q="plusmessenger">Plus Messenger<small>12.9.2.0 · Paresh · 88 downloads</small></a>
+                <a class="app" id="a-plutotv" href="https://nullcpy.github.io/?q=plutotv" data-store data-q="plutotv">PlutoTV<small>5.66.0-leanback · ajstrick81 · 16 downloads</small></a>
+                <a class="app" id="a-pocketcasts" href="https://nullcpy.github.io/?q=pocketcasts" data-store data-q="pocketcasts">Pocket Casts<small>8.16 · rushiranpise · 13 downloads</small></a>
+                <a class="app" id="a-pocketwhip" href="https://nullcpy.github.io/?q=pocketwhip" data-store data-q="pocketwhip">Pocket Whip<small>2.3 · hxreborn · 31 downloads</small></a>
+                <a class="app" id="a-podcastaddict" href="https://nullcpy.github.io/?q=podcastaddict" data-store data-q="podcastaddict">Podcast Addict<small>2026.10.1 · hoodles · 31 downloads</small></a>
+                <a class="app" id="a-poweramp" href="https://nullcpy.github.io/?q=poweramp" data-store data-q="poweramp">Poweramp<small>build-1025-bundle-play · hooman · 1,405 downloads</small></a>
+                <a class="app" id="a-primevideo" href="https://nullcpy.github.io/?q=primevideo" data-store data-q="primevideo">Prime Video<small>6.23.23+v15.5.0.70-armv7a · ajstrick81 +1 more · 102 downloads</small></a>
+                <a class="app" id="a-protonmail" href="https://nullcpy.github.io/?q=protonmail" data-store data-q="protonmail">Proton Mail<small>7.11.11 · hxreborn +3 more · 329 downloads</small></a>
+                <a class="app" id="a-protonpass" href="https://nullcpy.github.io/?q=protonpass" data-store data-q="protonpass">Proton Pass<small>1.41.5 · hxreborn · 265 downloads</small></a>
+                <a class="app" id="a-protonvpn" href="https://nullcpy.github.io/?q=protonvpn" data-store data-q="protonvpn">Proton VPN<small>5.20.98.0 · hxreborn +1 more · 1,305 downloads</small></a>
+                <a class="app" id="a-rar" href="https://nullcpy.github.io/?q=rar" data-store data-q="rar">RAR<small>7.23.build134 · rushiranpise · 22 downloads</small></a>
+                <a class="app" id="a-reddit" href="https://nullcpy.github.io/?q=reddit" data-store data-q="reddit">Reddit<small>2026.40.0 · Morphe +1 more · 2,018 downloads</small></a>
+                <a class="app" id="a-rikardonemlopot" href="https://nullcpy.github.io/?q=rikardonemlopot" data-store data-q="rikardonemlopot">Rikardo Nemlopot<small>2.077 · Smart123s · 9 downloads</small></a>
+                <a class="app" id="a-rumble" href="https://nullcpy.github.io/?q=rumble" data-store data-q="rumble">Rumble<small>3.14.5 · hooman · 26 downloads</small></a>
+                <a class="app" id="a-sdmaid2se" href="https://nullcpy.github.io/?q=sdmaid2se" data-store data-q="sdmaid2se">SD Maid 2/SE<small>1.7.3-rc0 · Paresh · 114 downloads</small></a>
+                <a class="app" id="a-sendfilestotv" href="https://nullcpy.github.io/?q=sendfilestotv" data-store data-q="sendfilestotv">Send Files to TV<small>1.4.22 · rushiranpise · 14 downloads</small></a>
+                <a class="app" id="a-showly" href="https://nullcpy.github.io/?q=showly" data-store data-q="showly">Showly<small>3.72.0 · hxreborn · 126 downloads</small></a>
+                <a class="app" id="a-smartlauncher6" href="https://nullcpy.github.io/?q=smartlauncher6" data-store data-q="smartlauncher6">Smart Launcher 6<small>6.6build020 · hoodles · 112 downloads</small></a>
+                <a class="app" id="a-sofascore" href="https://nullcpy.github.io/?q=sofascore" data-store data-q="sofascore">Sofascore<small>26.10.12 · heval99 · 73 downloads</small></a>
+                <a class="app" id="a-solidexplorer" href="https://nullcpy.github.io/?q=solidexplorer" data-store data-q="solidexplorer">Solid Explorer<small>3.6.1 · hoodles · 76 downloads</small></a>
+                <a class="app" id="a-soundcloud" href="https://nullcpy.github.io/?q=soundcloud" data-store data-q="soundcloud">SoundCloud<small>2026.09.09-release · kondratjev +1 more · 165 downloads</small></a>
+                <a class="app" id="a-speedtest" href="https://nullcpy.github.io/?q=speedtest" data-store data-q="speedtest">Speedtest<small>7.0.4 · BholeyKaBhakt · 79 downloads</small></a>
+                <a class="app" id="a-strava" href="https://nullcpy.github.io/?q=strava" data-store data-q="strava">Strava<small>477.14 · DeVanced · 5,641 downloads</small></a>
+                <a class="app" id="a-swiftbackup" href="https://nullcpy.github.io/?q=swiftbackup" data-store data-q="swiftbackup">Swift Backup<small>5.1.0 · byehi98 +1 more · 63 downloads</small></a>
+                <a class="app" id="a-symfonium" href="https://nullcpy.github.io/?q=symfonium" data-store data-q="symfonium">Symfonium<small>14.0.0 · binarymend · 75 downloads</small></a>
+                <a class="app" id="a-telegram" href="https://nullcpy.github.io/?q=telegram" data-store data-q="telegram">Telegram<small>12.10.1 · rushiranpise +2 more · 453 downloads</small></a>
+                <a class="app" id="a-terabox" href="https://nullcpy.github.io/?q=terabox" data-store data-q="terabox">TeraBox<small>4.27.5 · hxreborn · 270 downloads</small></a>
+                <a class="app" id="a-termius" href="https://nullcpy.github.io/?q=termius" data-store data-q="termius">Termius<small>7.11.2 · rushiranpise · 35 downloads</small></a>
+                <a class="app" id="a-theweatherchannel" href="https://nullcpy.github.io/?q=theweatherchannel" data-store data-q="theweatherchannel">The Weather Channel<small>16.26.0 · rushiranpise · 72 downloads</small></a>
+                <a class="app" id="a-threads" href="https://nullcpy.github.io/?q=threads" data-store data-q="threads">Threads<small>452.0.0.50.64 · HushThreads +1 more · 132 downloads</small></a>
+                <a class="app" id="a-ticktick" href="https://nullcpy.github.io/?q=ticktick" data-store data-q="ticktick">TickTick<small>8.1.3.3 · Paresh · 48 downloads</small></a>
+                <a class="app" id="a-tiktok" href="https://nullcpy.github.io/?q=tiktok" data-store data-q="tiktok">TikTok<small>47.5.3 · kveld9 +3 more · 1,159 downloads</small></a>
+                <a class="app" id="a-titaniumbrowser" href="https://nullcpy.github.io/?q=titaniumbrowser" data-store data-q="titaniumbrowser">Titanium Browser<small>155.0.8059.79 · dh6k · 72 downloads</small></a>
+                <a class="app" id="a-todoist" href="https://nullcpy.github.io/?q=todoist" data-store data-q="todoist">Todoist<small>12190 · hooman · 34 downloads</small></a>
+                <a class="app" id="a-trakttv" href="https://nullcpy.github.io/?q=trakttv" data-store data-q="trakttv">trakt.TV<small>3.19.0 · IMXEren · 116 downloads</small></a>
+                <a class="app" id="a-truecaller" href="https://nullcpy.github.io/?q=truecaller" data-store data-q="truecaller">Truecaller<small>26.41.5 · heval99 +2 more · 861 downloads</small></a>
+                <a class="app" id="a-tubi" href="https://nullcpy.github.io/?q=tubi" data-store data-q="tubi">Tubi<small>10.40.5000 · ajstrick81 · 47 downloads</small></a>
+                <a class="app" id="a-tumblr" href="https://nullcpy.github.io/?q=tumblr" data-store data-q="tumblr">Tumblr<small>45.8.0.110 · hooman · 81 downloads</small></a>
+                <a class="app" id="a-twitch" href="https://nullcpy.github.io/?q=twitch" data-store data-q="twitch">Twitch<small>13.0.0.2 · ajstrick81 +1 more · 251 downloads</small></a>
+                <a class="app" id="a-twitter" href="https://nullcpy.github.io/?q=twitter" data-store data-q="twitter">Twitter<small>12.38.1-prod.01 · Piko · 1,145 downloads</small></a>
+                <a class="app" id="a-ventusky" href="https://nullcpy.github.io/?q=ventusky" data-store data-q="ventusky">Ventusky<small>53.1 · hoodles · 26 downloads</small></a>
+                <a class="app" id="a-viber" href="https://nullcpy.github.io/?q=viber" data-store data-q="viber">Viber<small>26.1.2.0 · DeVanced · 16 downloads</small></a>
+                <a class="app" id="a-vix" href="https://nullcpy.github.io/?q=vix" data-store data-q="vix">ViX<small>4.51.0_tv · ajstrick81 · 23 downloads</small></a>
+                <a class="app" id="a-vpnify" href="https://nullcpy.github.io/?q=vpnify" data-store data-q="vpnify">VPNify<small>2.2.9 · BholeyKaBhakt · 146 downloads</small></a>
+                <a class="app" id="a-wallcraft" href="https://nullcpy.github.io/?q=wallcraft" data-store data-q="wallcraft">Wallcraft<small>3.61.01 · hoodles · 44 downloads</small></a>
+                <a class="app" id="a-windscribevpn" href="https://nullcpy.github.io/?q=windscribevpn" data-store data-q="windscribevpn">Windscribe VPN<small>4.3.2360 · rushiranpise · 180 downloads</small></a>
+                <a class="app" id="a-wpsoffice" href="https://nullcpy.github.io/?q=wpsoffice" data-store data-q="wpsoffice">WPS Office<small>18.24 · hoodles · 78 downloads</small></a>
+                <a class="app" id="a-xodo" href="https://nullcpy.github.io/?q=xodo" data-store data-q="xodo">Xodo<small>11.2.0 · hoodles · 73 downloads</small></a>
+                <a class="app" id="a-xrecorder" href="https://nullcpy.github.io/?q=xrecorder" data-store data-q="xrecorder">XRecorder<small>2.5.1.1 · hoodles · 45 downloads</small></a>
+                <a class="app" id="a-youtube" href="https://nullcpy.github.io/?q=youtube" data-store data-q="youtube">YouTube<small>21.30.216 · Morphe +1 more · 8,007 downloads</small></a>
+                <a class="app" id="a-youtubemusic" href="https://nullcpy.github.io/?q=youtubemusic" data-store data-q="youtubemusic">YouTube Music<small>9.30.53 · Morphe +1 more · 2,832 downloads</small></a>
+                <a class="app" id="a-zalo" href="https://nullcpy.github.io/?q=zalo" data-store data-q="zalo">Zalo<small>26.08.01 · zeldrisho · 16 downloads</small></a>
+            </div>
+        </section>
+
+        <section id="brands" aria-labelledby="brands-h">
+            <h2 id="brands-h">Patch brands and builders</h2>
+            <p class="section-sub">
+                NullStore aggregates builds produced by the NullForge automated builder from the ReVanced
+                and MorpheApp patch sources, ReVanced Advanced (RVX), Piko, anddea, DeVanced and other
+                independent patch brands, currently
+                <strong>61</strong> brands across the catalog. Each app card in the store shows exactly
+                which brand produced each build, its version, release date and applied patches, so you
+                always know what you are installing.
+            </p>
+        </section>
+
+        <section id="faq" aria-labelledby="faq-h">
+            <h2 id="faq-h">FAQ</h2>
+            <dl class="faq">
+                <dt>Where can I download patched ReVanced, MorpheApp or ReVanced Advanced apps?</dt>
+                <dd><a data-store href="https://nullcpy.github.io/">NullStore</a> lists every current
+                    build with its version, architecture and applied patches, and links straight to the
+                    original release files on GitHub.</dd>
+                <dt>Is this safe to install?</dt>
+                <dd>Every build links to its source release; nothing is re-hosted or re-signed by this site.
+                    Check the applied-patch list on each build card and install only what you trust.</dd>
+                <dt>Do I need root?</dt>
+                <dd>Patched APKs need no root. The catalog also carries <em>Magisk</em> and <em>KernelSU</em>
+                    modules for rooted devices, marked as Module downloads.</dd>
+                <dt>Can I get automatic updates?</dt>
+                <dd>Yes, every build exposes an <a href="https://github.com/ImranR98/Obtainium">Obtainium</a>
+                    one-click install, so your phone checks for new builds itself.</dd>
+                <dt>How often is the catalog refreshed?</dt>
+                <dd>Automatically, within hours of any upstream release. This page and the store are rebuilt
+                    on a daily schedule from the live catalog.</dd>
+                <dt>Where can I see the source code?</dt>
+                <dd>The <a href="https://github.com/nullcpy/rvb">NullForge builder</a> that patches and
+                    publishes every build, the
+                    <a href="https://github.com/nullcpy/nullcpy.github.io">store website</a> that renders
+                    this catalog, and <a href="https://github.com/nullcpy/nullstore">this gateway page</a>
+                    are all open source on GitHub.</dd>
+            </dl>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="wrap">
+            <p>NullStore is an independent catalog; it is not affiliated with Google, ReVanced, MorpheApp or
+                the developers of the patched apps. All builds link to their original public releases.</p>
+            <p>© <a href="https://github.com/nullcpy">nullcpy</a> · Catalog updated Fri, 30 Oct 2026 11:26:29 GMT</p>
+        </div>
+    </footer>
+
+    <!-- Structured data, per-app entries, stats and the domain list are injected
+         at build time by build.mjs from the live catalog (data.json). See README. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://nullcpy.github.io/nullstore/#website",
+          "url": "https://nullcpy.github.io/nullstore/",
+          "name": "NullStore",
+          "publisher": {
+            "@id": "https://nullcpy.github.io/nullstore/#publisher"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://nullcpy.github.io/nullstore/#publisher",
+          "name": "nullcpy",
+          "url": "https://nullcpy.github.io/",
+          "sameAs": [
+            "https://github.com/nullcpy"
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://nullcpy.github.io/nullstore/#apps",
+          "name": "Patched Android apps in the NullStore catalog",
+          "numberOfItems": 142,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "url": "https://nullcpy.github.io/nullstore/#a-acalendar",
+              "name": "aCalendar"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "url": "https://nullcpy.github.io/nullstore/#a-accuweather",
+              "name": "AccuWeather"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "url": "https://nullcpy.github.io/nullstore/#a-adguard",
+              "name": "AdGuard"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "url": "https://nullcpy.github.io/nullstore/#a-adobeacrobat",
+              "name": "Adobe Acrobat"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "url": "https://nullcpy.github.io/nullstore/#a-adobelightroom",
+              "name": "Adobe Lightroom"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "url": "https://nullcpy.github.io/nullstore/#a-adobescan",
+              "name": "Adobe Scan"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "url": "https://nullcpy.github.io/nullstore/#a-aliexpress",
+              "name": "AliExpress"
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "url": "https://nullcpy.github.io/nullstore/#a-amazonindia",
+              "name": "Amazon India"
+            },
+            {
+              "@type": "ListItem",
+              "position": 9,
+              "url": "https://nullcpy.github.io/nullstore/#a-amazonshopping",
+              "name": "Amazon Shopping"
+            },
+            {
+              "@type": "ListItem",
+              "position": 10,
+              "url": "https://nullcpy.github.io/nullstore/#a-appsales",
+              "name": "AppSales"
+            },
+            {
+              "@type": "ListItem",
+              "position": 11,
+              "url": "https://nullcpy.github.io/nullstore/#a-at4klauncher",
+              "name": "AT4K Launcher"
+            },
+            {
+              "@type": "ListItem",
+              "position": 12,
+              "url": "https://nullcpy.github.io/nullstore/#a-atvtools",
+              "name": "atvTools"
+            },
+            {
+              "@type": "ListItem",
+              "position": 13,
+              "url": "https://nullcpy.github.io/nullstore/#a-automate",
+              "name": "Automate"
+            },
+            {
+              "@type": "ListItem",
+              "position": 14,
+              "url": "https://nullcpy.github.io/nullstore/#a-autosync",
+              "name": "Autosync"
+            },
+            {
+              "@type": "ListItem",
+              "position": 15,
+              "url": "https://nullcpy.github.io/nullstore/#a-backdrops",
+              "name": "Backdrops"
+            },
+            {
+              "@type": "ListItem",
+              "position": 16,
+              "url": "https://nullcpy.github.io/nullstore/#a-batteryguru",
+              "name": "Battery Guru"
+            },
+            {
+              "@type": "ListItem",
+              "position": 17,
+              "url": "https://nullcpy.github.io/nullstore/#a-betamaniac",
+              "name": "Beta Maniac"
+            },
+            {
+              "@type": "ListItem",
+              "position": 18,
+              "url": "https://nullcpy.github.io/nullstore/#a-blockblast",
+              "name": "Block Blast"
+            },
+            {
+              "@type": "ListItem",
+              "position": 19,
+              "url": "https://nullcpy.github.io/nullstore/#a-bluetoothkeyboardmouse",
+              "name": "Bluetooth Keyboard & Mouse"
+            },
+            {
+              "@type": "ListItem",
+              "position": 20,
+              "url": "https://nullcpy.github.io/nullstore/#a-bravebrowser",
+              "name": "Brave Browser"
+            },
+            {
+              "@type": "ListItem",
+              "position": 21,
+              "url": "https://nullcpy.github.io/nullstore/#a-byair",
+              "name": "ByAir"
+            },
+            {
+              "@type": "ListItem",
+              "position": 22,
+              "url": "https://nullcpy.github.io/nullstore/#a-calm",
+              "name": "Calm"
+            },
+            {
+              "@type": "ListItem",
+              "position": 23,
+              "url": "https://nullcpy.github.io/nullstore/#a-caloriecounter",
+              "name": "Calorie Counter"
+            },
+            {
+              "@type": "ListItem",
+              "position": 24,
+              "url": "https://nullcpy.github.io/nullstore/#a-camscanner",
+              "name": "CamScanner"
+            },
+            {
+              "@type": "ListItem",
+              "position": 25,
+              "url": "https://nullcpy.github.io/nullstore/#a-capcut",
+              "name": "CapCut"
+            },
+            {
+              "@type": "ListItem",
+              "position": 26,
+              "url": "https://nullcpy.github.io/nullstore/#a-chesscom",
+              "name": "Chess.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 27,
+              "url": "https://nullcpy.github.io/nullstore/#a-citymapper",
+              "name": "Citymapper"
+            },
+            {
+              "@type": "ListItem",
+              "position": 28,
+              "url": "https://nullcpy.github.io/nullstore/#a-cloudflarewarp",
+              "name": "Cloudflare WARP"
+            },
+            {
+              "@type": "ListItem",
+              "position": 29,
+              "url": "https://nullcpy.github.io/nullstore/#a-cricbuzz",
+              "name": "Cricbuzz"
+            },
+            {
+              "@type": "ListItem",
+              "position": 30,
+              "url": "https://nullcpy.github.io/nullstore/#a-discord",
+              "name": "Discord"
+            },
+            {
+              "@type": "ListItem",
+              "position": 31,
+              "url": "https://nullcpy.github.io/nullstore/#a-disney",
+              "name": "Disney+"
+            },
+            {
+              "@type": "ListItem",
+              "position": 32,
+              "url": "https://nullcpy.github.io/nullstore/#a-duolingo",
+              "name": "Duolingo"
+            },
+            {
+              "@type": "ListItem",
+              "position": 33,
+              "url": "https://nullcpy.github.io/nullstore/#a-eyecon",
+              "name": "Eyecon"
+            },
+            {
+              "@type": "ListItem",
+              "position": 34,
+              "url": "https://nullcpy.github.io/nullstore/#a-fdroid",
+              "name": "F-Droid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 35,
+              "url": "https://nullcpy.github.io/nullstore/#a-facebook",
+              "name": "Facebook"
+            },
+            {
+              "@type": "ListItem",
+              "position": 36,
+              "url": "https://nullcpy.github.io/nullstore/#a-fairemail",
+              "name": "FairEmail"
+            },
+            {
+              "@type": "ListItem",
+              "position": 37,
+              "url": "https://nullcpy.github.io/nullstore/#a-fing",
+              "name": "Fing"
+            },
+            {
+              "@type": "ListItem",
+              "position": 38,
+              "url": "https://nullcpy.github.io/nullstore/#a-firsty",
+              "name": "Firsty"
+            },
+            {
+              "@type": "ListItem",
+              "position": 39,
+              "url": "https://nullcpy.github.io/nullstore/#a-flipkart",
+              "name": "Flipkart"
+            },
+            {
+              "@type": "ListItem",
+              "position": 40,
+              "url": "https://nullcpy.github.io/nullstore/#a-foldersync",
+              "name": "FolderSync"
+            },
+            {
+              "@type": "ListItem",
+              "position": 41,
+              "url": "https://nullcpy.github.io/nullstore/#a-github",
+              "name": "GitHub"
+            },
+            {
+              "@type": "ListItem",
+              "position": 42,
+              "url": "https://nullcpy.github.io/nullstore/#a-goodreads",
+              "name": "Goodreads"
+            },
+            {
+              "@type": "ListItem",
+              "position": 43,
+              "url": "https://nullcpy.github.io/nullstore/#a-googlekeyboard",
+              "name": "Google Keyboard"
+            },
+            {
+              "@type": "ListItem",
+              "position": 44,
+              "url": "https://nullcpy.github.io/nullstore/#a-googlemaps",
+              "name": "Google Maps"
+            },
+            {
+              "@type": "ListItem",
+              "position": 45,
+              "url": "https://nullcpy.github.io/nullstore/#a-googlenews",
+              "name": "Google News"
+            },
+            {
+              "@type": "ListItem",
+              "position": 46,
+              "url": "https://nullcpy.github.io/nullstore/#a-googlephone",
+              "name": "Google Phone"
+            },
+            {
+              "@type": "ListItem",
+              "position": 47,
+              "url": "https://nullcpy.github.io/nullstore/#a-googlephotos",
+              "name": "Google Photos"
+            },
+            {
+              "@type": "ListItem",
+              "position": 48,
+              "url": "https://nullcpy.github.io/nullstore/#a-googlerecorder",
+              "name": "Google Recorder"
+            },
+            {
+              "@type": "ListItem",
+              "position": 49,
+              "url": "https://nullcpy.github.io/nullstore/#a-hbomax",
+              "name": "HBO Max"
+            },
+            {
+              "@type": "ListItem",
+              "position": 50,
+              "url": "https://nullcpy.github.io/nullstore/#a-hellochinese",
+              "name": "HelloChinese"
+            },
+            {
+              "@type": "ListItem",
+              "position": 51,
+              "url": "https://nullcpy.github.io/nullstore/#a-hermit",
+              "name": "Hermit"
+            },
+            {
+              "@type": "ListItem",
+              "position": 52,
+              "url": "https://nullcpy.github.io/nullstore/#a-holavpn",
+              "name": "Hola VPN"
+            },
+            {
+              "@type": "ListItem",
+              "position": 53,
+              "url": "https://nullcpy.github.io/nullstore/#a-ibispaintx",
+              "name": "Ibis Paint X"
+            },
+            {
+              "@type": "ListItem",
+              "position": 54,
+              "url": "https://nullcpy.github.io/nullstore/#a-iconpacker",
+              "name": "Icon Packer"
+            },
+            {
+              "@type": "ListItem",
+              "position": 55,
+              "url": "https://nullcpy.github.io/nullstore/#a-imdb",
+              "name": "IMDb"
+            },
+            {
+              "@type": "ListItem",
+              "position": 56,
+              "url": "https://nullcpy.github.io/nullstore/#a-inshorts",
+              "name": "Inshorts"
+            },
+            {
+              "@type": "ListItem",
+              "position": 57,
+              "url": "https://nullcpy.github.io/nullstore/#a-inshot",
+              "name": "InShot"
+            },
+            {
+              "@type": "ListItem",
+              "position": 58,
+              "url": "https://nullcpy.github.io/nullstore/#a-instagram",
+              "name": "Instagram"
+            },
+            {
+              "@type": "ListItem",
+              "position": 59,
+              "url": "https://nullcpy.github.io/nullstore/#a-kinestop",
+              "name": "KineStop"
+            },
+            {
+              "@type": "ListItem",
+              "position": 60,
+              "url": "https://nullcpy.github.io/nullstore/#a-komoot",
+              "name": "Komoot"
+            },
+            {
+              "@type": "ListItem",
+              "position": 61,
+              "url": "https://nullcpy.github.io/nullstore/#a-letterboxd",
+              "name": "Letterboxd"
+            },
+            {
+              "@type": "ListItem",
+              "position": 62,
+              "url": "https://nullcpy.github.io/nullstore/#a-linkedin",
+              "name": "LinkedIn"
+            },
+            {
+              "@type": "ListItem",
+              "position": 63,
+              "url": "https://nullcpy.github.io/nullstore/#a-luminawallpapers",
+              "name": "Lumina Wallpapers"
+            },
+            {
+              "@type": "ListItem",
+              "position": 64,
+              "url": "https://nullcpy.github.io/nullstore/#a-macrodroid",
+              "name": "MacroDroid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 65,
+              "url": "https://nullcpy.github.io/nullstore/#a-medium",
+              "name": "Medium"
+            },
+            {
+              "@type": "ListItem",
+              "position": 66,
+              "url": "https://nullcpy.github.io/nullstore/#a-meesho",
+              "name": "Meesho"
+            },
+            {
+              "@type": "ListItem",
+              "position": 67,
+              "url": "https://nullcpy.github.io/nullstore/#a-merriamwebsterdictionary",
+              "name": "Merriam Webster Dictionary"
+            },
+            {
+              "@type": "ListItem",
+              "position": 68,
+              "url": "https://nullcpy.github.io/nullstore/#a-messenger",
+              "name": "Messenger"
+            },
+            {
+              "@type": "ListItem",
+              "position": 69,
+              "url": "https://nullcpy.github.io/nullstore/#a-microsoftedge",
+              "name": "Microsoft Edge"
+            },
+            {
+              "@type": "ListItem",
+              "position": 70,
+              "url": "https://nullcpy.github.io/nullstore/#a-microsoftlens",
+              "name": "Microsoft Lens"
+            },
+            {
+              "@type": "ListItem",
+              "position": 71,
+              "url": "https://nullcpy.github.io/nullstore/#a-microsoftswiftkey",
+              "name": "Microsoft Swiftkey"
+            },
+            {
+              "@type": "ListItem",
+              "position": 72,
+              "url": "https://nullcpy.github.io/nullstore/#a-microsoftword",
+              "name": "Microsoft Word"
+            },
+            {
+              "@type": "ListItem",
+              "position": 73,
+              "url": "https://nullcpy.github.io/nullstore/#a-moneymanager",
+              "name": "Money Manager"
+            },
+            {
+              "@type": "ListItem",
+              "position": 74,
+              "url": "https://nullcpy.github.io/nullstore/#a-moonreader",
+              "name": "Moon+ Reader"
+            },
+            {
+              "@type": "ListItem",
+              "position": 75,
+              "url": "https://nullcpy.github.io/nullstore/#a-musicolet",
+              "name": "Musicolet"
+            },
+            {
+              "@type": "ListItem",
+              "position": 76,
+              "url": "https://nullcpy.github.io/nullstore/#a-musicoletcastplugin",
+              "name": "Musicolet Cast Plugin"
+            },
+            {
+              "@type": "ListItem",
+              "position": 77,
+              "url": "https://nullcpy.github.io/nullstore/#a-myexpenses",
+              "name": "My Expenses"
+            },
+            {
+              "@type": "ListItem",
+              "position": 78,
+              "url": "https://nullcpy.github.io/nullstore/#a-myfitnesspal",
+              "name": "MyFitnessPal"
+            },
+            {
+              "@type": "ListItem",
+              "position": 79,
+              "url": "https://nullcpy.github.io/nullstore/#a-netflix",
+              "name": "Netflix"
+            },
+            {
+              "@type": "ListItem",
+              "position": 80,
+              "url": "https://nullcpy.github.io/nullstore/#a-niagaralauncher",
+              "name": "Niagara Launcher"
+            },
+            {
+              "@type": "ListItem",
+              "position": 81,
+              "url": "https://nullcpy.github.io/nullstore/#a-ninjavpn",
+              "name": "Ninja VPN"
+            },
+            {
+              "@type": "ListItem",
+              "position": 82,
+              "url": "https://nullcpy.github.io/nullstore/#a-novalauncher",
+              "name": "Nova Launcher"
+            },
+            {
+              "@type": "ListItem",
+              "position": 83,
+              "url": "https://nullcpy.github.io/nullstore/#a-nuvio",
+              "name": "Nuvio"
+            },
+            {
+              "@type": "ListItem",
+              "position": 84,
+              "url": "https://nullcpy.github.io/nullstore/#a-offlinegames",
+              "name": "Offline Games"
+            },
+            {
+              "@type": "ListItem",
+              "position": 85,
+              "url": "https://nullcpy.github.io/nullstore/#a-pandora",
+              "name": "Pandora"
+            },
+            {
+              "@type": "ListItem",
+              "position": 86,
+              "url": "https://nullcpy.github.io/nullstore/#a-peacock",
+              "name": "Peacock"
+            },
+            {
+              "@type": "ListItem",
+              "position": 87,
+              "url": "https://nullcpy.github.io/nullstore/#a-photomath",
+              "name": "Photomath"
+            },
+            {
+              "@type": "ListItem",
+              "position": 88,
+              "url": "https://nullcpy.github.io/nullstore/#a-picsart",
+              "name": "PicsArt"
+            },
+            {
+              "@type": "ListItem",
+              "position": 89,
+              "url": "https://nullcpy.github.io/nullstore/#a-pinterest",
+              "name": "Pinterest"
+            },
+            {
+              "@type": "ListItem",
+              "position": 90,
+              "url": "https://nullcpy.github.io/nullstore/#a-pixiv",
+              "name": "pixiv"
+            },
+            {
+              "@type": "ListItem",
+              "position": 91,
+              "url": "https://nullcpy.github.io/nullstore/#a-plusmessenger",
+              "name": "Plus Messenger"
+            },
+            {
+              "@type": "ListItem",
+              "position": 92,
+              "url": "https://nullcpy.github.io/nullstore/#a-plutotv",
+              "name": "PlutoTV"
+            },
+            {
+              "@type": "ListItem",
+              "position": 93,
+              "url": "https://nullcpy.github.io/nullstore/#a-pocketcasts",
+              "name": "Pocket Casts"
+            },
+            {
+              "@type": "ListItem",
+              "position": 94,
+              "url": "https://nullcpy.github.io/nullstore/#a-pocketwhip",
+              "name": "Pocket Whip"
+            },
+            {
+              "@type": "ListItem",
+              "position": 95,
+              "url": "https://nullcpy.github.io/nullstore/#a-podcastaddict",
+              "name": "Podcast Addict"
+            },
+            {
+              "@type": "ListItem",
+              "position": 96,
+              "url": "https://nullcpy.github.io/nullstore/#a-poweramp",
+              "name": "Poweramp"
+            },
+            {
+              "@type": "ListItem",
+              "position": 97,
+              "url": "https://nullcpy.github.io/nullstore/#a-primevideo",
+              "name": "Prime Video"
+            },
+            {
+              "@type": "ListItem",
+              "position": 98,
+              "url": "https://nullcpy.github.io/nullstore/#a-protonmail",
+              "name": "Proton Mail"
+            },
+            {
+              "@type": "ListItem",
+              "position": 99,
+              "url": "https://nullcpy.github.io/nullstore/#a-protonpass",
+              "name": "Proton Pass"
+            },
+            {
+              "@type": "ListItem",
+              "position": 100,
+              "url": "https://nullcpy.github.io/nullstore/#a-protonvpn",
+              "name": "Proton VPN"
+            },
+            {
+              "@type": "ListItem",
+              "position": 101,
+              "url": "https://nullcpy.github.io/nullstore/#a-rar",
+              "name": "RAR"
+            },
+            {
+              "@type": "ListItem",
+              "position": 102,
+              "url": "https://nullcpy.github.io/nullstore/#a-reddit",
+              "name": "Reddit"
+            },
+            {
+              "@type": "ListItem",
+              "position": 103,
+              "url": "https://nullcpy.github.io/nullstore/#a-rikardonemlopot",
+              "name": "Rikardo Nemlopot"
+            },
+            {
+              "@type": "ListItem",
+              "position": 104,
+              "url": "https://nullcpy.github.io/nullstore/#a-rumble",
+              "name": "Rumble"
+            },
+            {
+              "@type": "ListItem",
+              "position": 105,
+              "url": "https://nullcpy.github.io/nullstore/#a-sdmaid2se",
+              "name": "SD Maid 2/SE"
+            },
+            {
+              "@type": "ListItem",
+              "position": 106,
+              "url": "https://nullcpy.github.io/nullstore/#a-sendfilestotv",
+              "name": "Send Files to TV"
+            },
+            {
+              "@type": "ListItem",
+              "position": 107,
+              "url": "https://nullcpy.github.io/nullstore/#a-showly",
+              "name": "Showly"
+            },
+            {
+              "@type": "ListItem",
+              "position": 108,
+              "url": "https://nullcpy.github.io/nullstore/#a-smartlauncher6",
+              "name": "Smart Launcher 6"
+            },
+            {
+              "@type": "ListItem",
+              "position": 109,
+              "url": "https://nullcpy.github.io/nullstore/#a-sofascore",
+              "name": "Sofascore"
+            },
+            {
+              "@type": "ListItem",
+              "position": 110,
+              "url": "https://nullcpy.github.io/nullstore/#a-solidexplorer",
+              "name": "Solid Explorer"
+            },
+            {
+              "@type": "ListItem",
+              "position": 111,
+              "url": "https://nullcpy.github.io/nullstore/#a-soundcloud",
+              "name": "SoundCloud"
+            },
+            {
+              "@type": "ListItem",
+              "position": 112,
+              "url": "https://nullcpy.github.io/nullstore/#a-speedtest",
+              "name": "Speedtest"
+            },
+            {
+              "@type": "ListItem",
+              "position": 113,
+              "url": "https://nullcpy.github.io/nullstore/#a-strava",
+              "name": "Strava"
+            },
+            {
+              "@type": "ListItem",
+              "position": 114,
+              "url": "https://nullcpy.github.io/nullstore/#a-swiftbackup",
+              "name": "Swift Backup"
+            },
+            {
+              "@type": "ListItem",
+              "position": 115,
+              "url": "https://nullcpy.github.io/nullstore/#a-symfonium",
+              "name": "Symfonium"
+            },
+            {
+              "@type": "ListItem",
+              "position": 116,
+              "url": "https://nullcpy.github.io/nullstore/#a-telegram",
+              "name": "Telegram"
+            },
+            {
+              "@type": "ListItem",
+              "position": 117,
+              "url": "https://nullcpy.github.io/nullstore/#a-terabox",
+              "name": "TeraBox"
+            },
+            {
+              "@type": "ListItem",
+              "position": 118,
+              "url": "https://nullcpy.github.io/nullstore/#a-termius",
+              "name": "Termius"
+            },
+            {
+              "@type": "ListItem",
+              "position": 119,
+              "url": "https://nullcpy.github.io/nullstore/#a-theweatherchannel",
+              "name": "The Weather Channel"
+            },
+            {
+              "@type": "ListItem",
+              "position": 120,
+              "url": "https://nullcpy.github.io/nullstore/#a-threads",
+              "name": "Threads"
+            },
+            {
+              "@type": "ListItem",
+              "position": 121,
+              "url": "https://nullcpy.github.io/nullstore/#a-ticktick",
+              "name": "TickTick"
+            },
+            {
+              "@type": "ListItem",
+              "position": 122,
+              "url": "https://nullcpy.github.io/nullstore/#a-tiktok",
+              "name": "TikTok"
+            },
+            {
+              "@type": "ListItem",
+              "position": 123,
+              "url": "https://nullcpy.github.io/nullstore/#a-titaniumbrowser",
+              "name": "Titanium Browser"
+            },
+            {
+              "@type": "ListItem",
+              "position": 124,
+              "url": "https://nullcpy.github.io/nullstore/#a-todoist",
+              "name": "Todoist"
+            },
+            {
+              "@type": "ListItem",
+              "position": 125,
+              "url": "https://nullcpy.github.io/nullstore/#a-trakttv",
+              "name": "trakt.TV"
+            },
+            {
+              "@type": "ListItem",
+              "position": 126,
+              "url": "https://nullcpy.github.io/nullstore/#a-truecaller",
+              "name": "Truecaller"
+            },
+            {
+              "@type": "ListItem",
+              "position": 127,
+              "url": "https://nullcpy.github.io/nullstore/#a-tubi",
+              "name": "Tubi"
+            },
+            {
+              "@type": "ListItem",
+              "position": 128,
+              "url": "https://nullcpy.github.io/nullstore/#a-tumblr",
+              "name": "Tumblr"
+            },
+            {
+              "@type": "ListItem",
+              "position": 129,
+              "url": "https://nullcpy.github.io/nullstore/#a-twitch",
+              "name": "Twitch"
+            },
+            {
+              "@type": "ListItem",
+              "position": 130,
+              "url": "https://nullcpy.github.io/nullstore/#a-twitter",
+              "name": "Twitter"
+            },
+            {
+              "@type": "ListItem",
+              "position": 131,
+              "url": "https://nullcpy.github.io/nullstore/#a-ventusky",
+              "name": "Ventusky"
+            },
+            {
+              "@type": "ListItem",
+              "position": 132,
+              "url": "https://nullcpy.github.io/nullstore/#a-viber",
+              "name": "Viber"
+            },
+            {
+              "@type": "ListItem",
+              "position": 133,
+              "url": "https://nullcpy.github.io/nullstore/#a-vix",
+              "name": "ViX"
+            },
+            {
+              "@type": "ListItem",
+              "position": 134,
+              "url": "https://nullcpy.github.io/nullstore/#a-vpnify",
+              "name": "VPNify"
+            },
+            {
+              "@type": "ListItem",
+              "position": 135,
+              "url": "https://nullcpy.github.io/nullstore/#a-wallcraft",
+              "name": "Wallcraft"
+            },
+            {
+              "@type": "ListItem",
+              "position": 136,
+              "url": "https://nullcpy.github.io/nullstore/#a-windscribevpn",
+              "name": "Windscribe VPN"
+            },
+            {
+              "@type": "ListItem",
+              "position": 137,
+              "url": "https://nullcpy.github.io/nullstore/#a-wpsoffice",
+              "name": "WPS Office"
+            },
+            {
+              "@type": "ListItem",
+              "position": 138,
+              "url": "https://nullcpy.github.io/nullstore/#a-xodo",
+              "name": "Xodo"
+            },
+            {
+              "@type": "ListItem",
+              "position": 139,
+              "url": "https://nullcpy.github.io/nullstore/#a-xrecorder",
+              "name": "XRecorder"
+            },
+            {
+              "@type": "ListItem",
+              "position": 140,
+              "url": "https://nullcpy.github.io/nullstore/#a-youtube",
+              "name": "YouTube"
+            },
+            {
+              "@type": "ListItem",
+              "position": 141,
+              "url": "https://nullcpy.github.io/nullstore/#a-youtubemusic",
+              "name": "YouTube Music"
+            },
+            {
+              "@type": "ListItem",
+              "position": 142,
+              "url": "https://nullcpy.github.io/nullstore/#a-zalo",
+              "name": "Zalo"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://nullcpy.github.io/nullstore/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Where can I download patched ReVanced, MorpheApp or ReVanced Advanced apps?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "NullStore lists every current build with its version, architecture and applied patches, and links straight to the original release files on GitHub."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this safe to install?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Every build links to its source release; nothing is re-hosted or re-signed by this site. Check the applied-patch list on each build card and install only what you trust."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need root?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Patched APKs need no root. The catalog also carries Magisk and KernelSU modules for rooted devices, marked as Module downloads."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I get automatic updates?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, every build exposes an Obtainium one-click install, so your phone checks for new builds itself."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often is the catalog refreshed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Automatically, within hours of any upstream release. This page and the store are rebuilt on a daily schedule from the live catalog."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where can I see the source code?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The NullForge builder that patches and publishes every build, the store website that renders this catalog, and this gateway page are all open source on GitHub."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script>
+        // Store-domain rotation: one deterministic pick per visitor (survives
+        // page reloads via localStorage) shared by the "Open the store" button
+        // and every app card, so no single domain absorbs all gateway traffic.
+        // Crawl semantics never change: every href in the committed HTML stays
+        // the canonical origin; only the visitor's browser swaps the domain.
+        (function () {
+            var DOMAINS = [
+                'https://nullcpy.github.io/',
+                'https://nullstore.vercel.app/',
+                'https://nullcpy.pages.dev/',
+                'https://nullstore.nullcpy.workers.dev/'
+            ];
+            var i = -1;
+            try { i = parseInt(localStorage.getItem('ns-domain') || '', 10); } catch (e) { /* storage blocked */ }
+            if (!(i >= 0 && i < DOMAINS.length)) {
+                i = Math.floor(Math.random() * DOMAINS.length);
+                try { localStorage.setItem('ns-domain', String(i)); } catch (e) { /* best effort */ }
+            }
+            var base = DOMAINS[i];
+            var els = document.querySelectorAll('[data-store]');
+            for (var k = 0; k < els.length; k++) {
+                var q = els[k].getAttribute('data-q');
+                els[k].href = q ? base + '?q=' + encodeURIComponent(q) : base;
+            }
+        })();
+    </script>
+
+    <!-- Cloudflare Web Analytics beacon, written by the CI deploy step from the
+         CF_BEACON_TOKEN repo secret -- never committed in index.html -->
+    <!-- ANALYTICS-BEACON -->
+</body>
+
+</html>
