@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NullStore - Patched Android Apps: ReVanced, MorpheApp, ReVanced Advanced, Magisk Modules</title>
     <meta name="description"
-        content="One catalog of the latest patched Android apps built by NullForge from ReVanced, MorpheApp, ReVanced Advanced (RVX), Piko and other patch brands, plus Magisk and KernelSU modules. 142 apps, ad-free with unlocked features, refreshed within hours of every release.">
+        content="One catalog of the latest patched Android apps built by NullForge from ReVanced, MorpheApp, ReVanced Advanced (RVX), Piko and other patch bundles, plus Magisk and KernelSU modules. 142 apps, ad-free with unlocked features, refreshed within hours of every release.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Fahim Ahmed / nullcpy">
     <link rel="canonical" href="https://nullcpy.github.io/nullstore/">
@@ -83,10 +83,18 @@
             font-weight: 800;
             margin: 0 0 12px;
             letter-spacing: -0.02em;
+            color: var(--accent);
         }
 
-        h1 .accent {
-            color: var(--accent);
+        /* Block-level span so the tagline still reads as part of the h1 text for
+           crawlers while sitting on its own line as a sub-heading */
+        .subhead {
+            display: block;
+            font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+            font-weight: 600;
+            letter-spacing: 0;
+            color: var(--text-2);
+            margin-top: 6px;
         }
 
         .lede {
@@ -242,13 +250,15 @@
 <body>
     <header class="site">
         <div class="wrap">
-            <h1><span class="accent">Null</span>Store - Patched Android App Catalog</h1>
+            <h1>NullStore
+                <span class="subhead">Patched Android App Catalog</span>
+            </h1>
             <p class="lede">
                 One fast page for the latest patched builds of <strong>142 Android apps</strong>,
                 YouTube, Reddit, TikTok, Telegram, Spotify and more, ad-free with unlocked features.
                 Built automatically by <strong>NullForge</strong> from the <strong>ReVanced</strong>,
                 <strong>MorpheApp</strong>, <strong>ReVanced Advanced (RVX)</strong>, <strong>Piko</strong>
-                and other community patch brands, plus <strong>Magisk and KernelSU modules</strong>.
+                and other community patch bundles, plus <strong>Magisk and KernelSU modules</strong>.
                 Every build appears here within hours of its upstream release.
             </p>
             <nav class="stats" aria-label="Catalog size">
@@ -294,14 +304,14 @@
             </div>
         </section>
 
-        <section id="brands" aria-labelledby="brands-h">
-            <h2 id="brands-h">Patch brands and builders</h2>
+        <section id="bundles" aria-labelledby="bundles-h">
+            <h2 id="bundles-h">Patch bundles and builder</h2>
             <p class="section-sub">
                 NullStore aggregates builds produced by the NullForge automated builder from the ReVanced
                 and MorpheApp patch sources, ReVanced Advanced (RVX), Piko, anddea, DeVanced and other
-                independent patch brands, currently
-                <!-- BUILD:BRANDCOUNT --> brands across the catalog. Each app card in the store shows exactly
-                which brand produced each build, its version, release date and applied patches, so you
+                independent patch bundles, currently
+                <!-- BUILD:BRANDCOUNT --> bundles across the catalog. Each app card in the store shows exactly
+                which bundle produced each build, its version, release date and applied patches, so you
                 always know what you are installing.
             </p>
         </section>

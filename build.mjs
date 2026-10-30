@@ -43,7 +43,9 @@ async function loadCatalog() {
 }
 
 function appRow(app) {
-    // Newest brand = the one that published last; its version is the headline.
+    // Newest entry of the data's brands[] = the one that published last; its
+    // version is the headline. (Field names follow the catalog schema; the UI
+    // calls these bundles.)
     // No "v" prefix: the catalog stores bare versions and the store site
     // displays them bare, so the gateway must not invent one.
     const brands = [...(app.brands ?? [])].sort((a, b) =>
@@ -97,10 +99,13 @@ const brandCount = new Set(apps.flatMap((a) => (a.brands ?? []).map((b) => b.bra
 // counters, which the catalog keeps live from the Releases API).
 const totalDownloads = apps.reduce((n, a) => n + (a.totalDownloads ?? 0), 0);
 
-const stat = (n, label) => `<span class="stat"><b>${n.toLocaleString('en-US')}</b><span>${label}</span></span>`;
+// Headline numbers stay compact (43,940 -> 43.9k); the exact figure is kept in
+// the stat's title attribute so nothing is actually lost to a curious reader.
+const compact = (n) => n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k` : String(n);
+const stat = (n, label) => `<span class="stat" title="${n.toLocaleString('en-US')} ${label}"><b>${compact(n)}</b><span>${label}</span></span>`;
 
 let html = readFileSync(path.join(ROOT, 'template.html'), 'utf8');
-html = html.replace('<!-- BUILD:STATS -->', [stat(apps.length, 'apps'), stat(totalDownloads, 'total downloads'), stat(brandCount, 'patch brands')].join('\n                '));
+html = html.replace('<!-- BUILD:STATS -->', [stat(apps.length, 'apps'), stat(totalDownloads, 'total downloads'), stat(brandCount, 'patch bundles')].join('\n                '));
 html = html.replace('<!-- BUILD:APPS -->', apps.map((a) => appRow(a)).join('\n'));
 html = html.replace('<!-- BUILD:BRANDCOUNT -->', `<strong>${brandCount}</strong>`);
 html = html.replace('<!-- BUILD:UPDATED -->', new Date(catalog.updated_at).toUTCString());
@@ -131,4 +136,4 @@ writeFileSync(path.join(ROOT, 'sitemap.xml'), [
     '',
 ].join('\n'));
 
-console.log(`build: ${apps.length} apps, ${totalDownloads.toLocaleString('en-US')} downloads, ${brandCount} brands -> index.html + robots.txt + sitemap.xml`);
+console.log(`build: ${apps.length} apps, ${totalDownloads.toLocaleString('en-US')} downloads, ${brandCount} bundles -> index.html + robots.txt + sitemap.xml`);
