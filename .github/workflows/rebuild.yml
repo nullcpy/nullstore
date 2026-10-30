@@ -1,0 +1,80 @@
+name: Rebuild and deploy gateway page
+
+# Daily freshness + on-demand rebuilds for the SEO gateway. Pulls the store's
+# live catalog (READ-ONLY -- this repo never writes to nullcpy.github.io),
+# regenerates index.html / robots.txt / sitemap.xml (app adds/removals and the
+# header stats therefore follow the store automatically), then publishes via
+# GitHub Pages with the Cloudflare beacon injected at deploy time.
+#
+# Pages must be set to "GitHub Actions" as its source (Settings -> Pages).
+# The committed index.html keeps the ANALYTICS-BEACON placeholder; only the
+# uploaded artifact ever contains the token, so forks never inherit it.
+
+on:
+  schedule:
+    - cron: '17 5 * * *' # daily ~05:17 UTC, off the round hours
+  push:
+    paths:
+      - 'template.html'
+      - 'build.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write      # commit the regenerated page
+  pages: write         # publish the artifact
+  id-token: write      # required by deploy-pages
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Fetch live catalog
+        run: curl -fsSL https://nullcpy.github.io/data.json -o data.json
+
+      - name: Build page
+        run: node build.mjs data.json
+
+      - name: Commit generated files (only on change)
+        id: commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain -- index.html robots.txt sitemap.xml)" ]; then
+            git add index.html robots.txt sitemap.xml
+            git commit -m "chore: rebuild gateway page from live catalog [skip ci]"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "no content change"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stage deploy artifact (beacon injected, never committed)
+        env:
+          CF_BEACON_TOKEN: ${{ secrets.CF_BEACON_TOKEN }}
+        run: |
+          mkdir -p dist
+          cp index.html robots.txt sitemap.xml .nojekyll dist/
+          node inject-beacon.mjs dist/index.html dist/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/deploy-pages@v4
