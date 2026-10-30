@@ -18,7 +18,7 @@ if (!src || !dst) {
 const token = (process.env.CF_BEACON_TOKEN ?? '').trim();
 const beacon = token
     ? '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='
-      + "'" + JSON.stringify({ token }) + "'" + '></script>'
+    + "'" + JSON.stringify({ token }) + "'" + '></script>'
     : '';
 
 const html = readFileSync(src, 'utf8');
