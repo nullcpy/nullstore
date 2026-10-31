@@ -20,13 +20,15 @@ page. Search engines rank **this** page; visitors click through to the store.
 
 | File | Role |
 |---|---|
-| `template.html` | The page design + all hand-written copy. Contains `<!-- BUILD:* -->` markers and the `ANALYTICS-BEACON` placeholder. |
+| `template.html` | The page design + all hand-written copy. Contains `<!-- BUILD:* -->` markers for injected blocks, `{{appCount}}` / `{{bundleCount}}` tokens for numbers quoted inside prose or meta content, and the `ANALYTICS-BEACON` placeholder. |
 | `build.mjs` | Fills the `BUILD:*` markers from a catalog `data.json`; writes `index.html`, `robots.txt`, `sitemap.xml`. Leaves the beacon placeholder untouched. |
 | `index.html`, `robots.txt`, `sitemap.xml` | **Generated.** Committed so the repo is self-viewable; deployed via the Actions Pages pipeline. Never hand-edit. `index.html` always keeps the beacon placeholder — the token itself never enters git. |
 | `inject-beacon.mjs` | CI-only: swaps the `ANALYTICS-BEACON` placeholder for the real beacon from `CF_BEACON_TOKEN`, into the **staged artifact** (not the committed file). Runs only inside `rebuild.yml`. |
 | `.github/workflows/rebuild.yml` | Daily (~05:17 UTC) fetch → rebuild → commit-if-changed → Pages deploy with beacon injection. Also rebuilds on `template.html`/`build.mjs` pushes and via `workflow_dispatch`. |
 
-App cards deep-link into the store's URL search (`https://nullcpy.github.io/?q=<appKey>`) — `script.js` reads `?q=` through `URLSearchParams` and its search engine scores `appKey` matches first, so every card lands on the right app. The header stats (apps / total downloads / patch bundles) are recomputed from the catalog on every build, so added/removed apps and their counts propagate automatically. Numbers of 1,000 or more render compactly (`43,940` becomes `43.9k`) with the exact figure kept in the stat's `title` attribute.
+App cards deep-link into the store's URL search (`https://nullcpy.github.io/?q=<appKey>`) — `script.js` reads `?q=` through `URLSearchParams` and its search engine scores `appKey` matches first, so every card lands on the right app. The header stats (apps / total downloads / patch bundles) are recomputed from the catalog on every build, so added/removed apps and their counts propagate automatically. Numbers of 1,000 or more render compactly (a `43,702` total shows as `43.7k`, a card's `5,643` as `5.6k`) with the exact figure kept in the stat's `title` attribute.
+
+Numbers that appear inside a sentence or a `content=""` attribute use `{{tokens}}` rather than HTML-comment markers, because a comment cannot live inside an attribute. Both mechanisms are filled by `build.mjs`; the harness asserts no token survives into the page and that the template hardcodes no catalog count.
 
 **Terminology:** the page says *patch bundle* throughout its copy, while the catalog schema field it is computed from is still `apps[].brands[]` (`brandName`, `brandKey`) and the rvb docs call the same thing a *patch brand*. Code keeps the schema names; prose keeps the reader-facing one.
 

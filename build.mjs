@@ -34,6 +34,10 @@ const STORE_DOMAINS = [
 
 const escapeHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+// Compact headline numbers (43,764 -> 43.8k), used by both the stats row and the
+// per-card download count so the two never disagree. Values under 1,000 stay raw.
+const compact = (n) => n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k` : String(n);
+
 async function loadCatalog() {
     const arg = process.argv[2];
     if (arg) return JSON.parse(readFileSync(path.resolve(arg), 'utf8'));
@@ -55,13 +59,16 @@ function appRow(app) {
     const meta = [
         newest?.latestVersion || null,
         newest?.brandName ? `${newest.brandName}${extra}` : null,
-        app.totalDownloads ? `${app.totalDownloads.toLocaleString('en-US')} downloads` : null,
-    ].filter(Boolean).join(' · ');
+        app.totalDownloads ? `${compact(app.totalDownloads)} downloads` : null,
+    ].filter(Boolean);
+    // One line each: three stacked <small>s, so a card reads as a mini spec sheet
+    // rather than one wrapped run-on string of separators.
+    const lines = meta.map((t) => `<small>${escapeHtml(t)}</small>`).join('');
     // The store SPA reads ?q= (URLSearchParams in script.js) and its search
     // scores appKey matches first, so the canonical key is the best token.
     // href stays the canonical origin for crawlers; the rotator swaps the
     // domain per visitor via data-store/data-q without touching crawl semantics.
-    return `                <a class="app" id="a-${escapeHtml(app.appKey)}" href="${ORIGIN}/?q=${encodeURIComponent(app.appKey)}" data-store data-q="${escapeHtml(app.appKey)}">${escapeHtml(app.appName)}<small>${escapeHtml(meta)}</small></a>`;
+    return `                <a class="app" id="a-${escapeHtml(app.appKey)}" href="${ORIGIN}/?q=${encodeURIComponent(app.appKey)}" data-store data-q="${escapeHtml(app.appKey)}">${escapeHtml(app.appName)}${lines}</a>`;
 }
 
 function jsonLd(apps, faq) {
@@ -99,17 +106,20 @@ const brandCount = new Set(apps.flatMap((a) => (a.brands ?? []).map((b) => b.bra
 // counters, which the catalog keeps live from the Releases API).
 const totalDownloads = apps.reduce((n, a) => n + (a.totalDownloads ?? 0), 0);
 
-// Headline numbers stay compact (43,940 -> 43.9k); the exact figure is kept in
-// the stat's title attribute so nothing is actually lost to a curious reader.
-const compact = (n) => n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k` : String(n);
+// Headline numbers stay compact; the exact figure is kept in the stat's title
+// attribute so nothing is actually lost to a curious reader.
 const stat = (n, label) => `<span class="stat" title="${n.toLocaleString('en-US')} ${label}"><b>${compact(n)}</b><span>${label}</span></span>`;
 
 let html = readFileSync(path.join(ROOT, 'template.html'), 'utf8');
 html = html.replace('<!-- BUILD:STATS -->', [stat(apps.length, 'apps'), stat(totalDownloads, 'total downloads'), stat(brandCount, 'patch bundles')].join('\n                '));
 html = html.replace('<!-- BUILD:APPS -->', apps.map((a) => appRow(a)).join('\n'));
-html = html.replace('<!-- BUILD:BRANDCOUNT -->', `<strong>${brandCount}</strong>`);
 html = html.replace('<!-- BUILD:UPDATED -->', new Date(catalog.updated_at).toUTCString());
 html = html.replace('<!-- BUILD:JSONLD -->', jsonLd(apps, FAQ));
+// Numbers quoted inside prose and in the meta/OG descriptions use {{tokens}},
+// so the lede, the search snippet and the stats row can never drift apart when
+// the catalog grows or shrinks. Replaced last: they are plain text, not markers.
+html = html.split('{{appCount}}').join(String(apps.length));
+html = html.split('{{bundleCount}}').join(String(brandCount));
 // NB: the ANALYTICS-BEACON placeholder is deliberately LEFT in index.html.
 // The committed artifact must stay token-free; only the CI deploy staging
 // step (rebuild.yml) swaps in the real beacon, via inject-beacon.mjs
