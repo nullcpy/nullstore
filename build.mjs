@@ -110,10 +110,18 @@ const totalDownloads = apps.reduce((n, a) => n + (a.totalDownloads ?? 0), 0);
 // attribute so nothing is actually lost to a curious reader.
 const stat = (n, label) => `<span class="stat" title="${n.toLocaleString('en-US')} ${label}"><b>${compact(n)}</b><span>${label}</span></span>`;
 
+// 12-hour clock, matching the store's own "last updated" pill. Pinned to UTC and
+// labelled as such: this string is baked at build time on the runner, so it
+// cannot be shown in each visitor's local zone the way the store's pill is.
+const stamp = (iso) => new Date(iso).toLocaleString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+    hour: 'numeric', minute: '2-digit', timeZone: 'UTC', hour12: true,
+}) + ' UTC';
+
 let html = readFileSync(path.join(ROOT, 'template.html'), 'utf8');
 html = html.replace('<!-- BUILD:STATS -->', [stat(apps.length, 'apps'), stat(totalDownloads, 'total downloads'), stat(brandCount, 'patch bundles')].join('\n                '));
 html = html.replace('<!-- BUILD:APPS -->', apps.map((a) => appRow(a)).join('\n'));
-html = html.replace('<!-- BUILD:UPDATED -->', new Date(catalog.updated_at).toUTCString());
+html = html.replace('<!-- BUILD:UPDATED -->', stamp(catalog.updated_at));
 html = html.replace('<!-- BUILD:JSONLD -->', jsonLd(apps, FAQ));
 // Numbers quoted inside prose and in the meta/OG descriptions use {{tokens}},
 // so the lede, the search snippet and the stats row can never drift apart when
